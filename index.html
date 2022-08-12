@@ -7,8 +7,8 @@
     <title>Blogster</title>
     <link rel="icon" type="image" href="icon.png">
     <link rel="stylesheet" href="blogster.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
 </head>
 <body>
 
@@ -76,14 +76,14 @@
         <div class="form1">
             <form name="myform" onsubmit="myfunc()" method="POST" >
                 <label for="userid">USER ID</label><br>
-                <input  name="userid" type="number" placeholder="Enter your user id here" required><br>
+                <input  id="userid" name="userid" type="number" placeholder="Enter your user id here" required><br>
                 <label for="id">ID</label><br>
-                <input name="id" type="number" placeholder="Enter your id here" required><br>
+                <input id="id" name="id" type="number" placeholder="Enter your id here" required><br>
                 <label for="blog">TITLE</label><br>
-                <input name="blog" type="text" placeholder="Enter blog title here" required><br>
+                <input id="title" name="blog" type="text" placeholder="Enter blog title here" required><br>
                 <label for="body" >BODY</label><br>
-                <textarea name="body" type="text" placeholder="Enter blog content here" required></textarea>
-                <button type="submit" class="formbtn">PUBLISH BLOG</button>
+                <textarea id="body" name="body" type="text" placeholder="Enter blog content here" required></textarea>
+                <button type="submit"  class="formbtn">PUBLISH BLOG</button>
 
             </form>
 
@@ -93,11 +93,24 @@
 
 
     <div class="foot">
+        <h2>
+            CONNECT WITH US AT
+        </h2>
 
         <a href="https://www.facebook.com/login/"><i class="fa-brands fa-facebook fa-2xl"></i></a>
         <a href="https://www.instagram.com/accounts/login/"><i class="fa-brands fa-instagram fa-2xl"></i></a>
         <a href="https://www.linkedin.com/login"><i class="fa-brands fa-linkedin fa-2xl"></i></a>
         <a href="https://twitter.com/i/flow/login"><i class="fa-brands fa-twitter fa-2xl"></i></a>
+
+        <h3>
+            WRITE TO US AT: blogster22@gmail.com<br>
+            CONTACT : 161-2345678
+        </h3>
+        
+
+        <h3>
+            BLOGSTER.COM 2022 || ALL RIGHTS RESERVED 
+        </h3>
 
 
 
@@ -111,39 +124,40 @@
 
 
 <script>
-        function myfunc(){
-		let x=document.forms["myform"]["userid"].value;
-		let y=document.forms["myform"]["id"].value;
-		let z=document.forms["myform"]["blog"].value;
-		let a=document.forms["myform"]["body"].value;
 
 
-		if(x=="")
-		{
-			alert("fill userid");
-			return false;
-		}
-		else if(y=="")
-		{
-			alert("fill id");
-			return false;
-		}
-		else if(z=="")
-		{
-			alert("fill title");
-			return false;
-		}
-		else if(a=="")
-		{
-			alert("fill text");
-			return false;
-		}
-		else{
-                alert("Your Blog is Published");
-		}
+    function myfunc(){
+    let x=document.forms["myform"]["userid"].value;
+    let y=document.forms["myform"]["id"].value;
+    let z=document.forms["myform"]["title"].value;
+    let a=document.forms["myform"]["body"].value;
 
 
-	}
+    if(x=="")
+    {
+        alert("fill userid");
+    }
+    else if(y=="")
+    {
+        alert("fill id");
+    
+    }
+    else if(z=="")
+    {
+        alert("fill title");
+        
+    }
+    else if(a=="")
+    {
+        alert("fill text");
+        
+    }
+    else{
+            alert("Your Blog is Published");
+    }
+
+
+}
 
 
 
