@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blogster</title>
+    <link rel="icon" type="image" href="icon.png">
+    <link rel="stylesheet" href="blogster.css">
+</head>
+<body>
+
+    <div class="navbar">
+        <div class="logo">
+            <img src="icon.png" alt="Blogster" width="45px" height="45px">
+            <span>BloGster</span>
+        </div>
+        
+        <ul class="navitem">
+            <li class="signin">SIGN IN</li>
+            <li><button class="btn1"><a href="#blogging">CREATE BLOGS</a></button> </li>
+        </ul>
+    </div>
+
+
+    <div class="intro">
+        <h1>
+            CONNECT WITH MILLIONS OF BLOGGERS
+        </h1>
+        <h2>On BloGster</h2>
+        <p>Create beautiful blogs that suits your style.<br>Whether sharing your opinions,expertise,<br>news or whatever is on your mind,
+            you <br> are at a right place on BloGster.
+        </p>
+        <img src="blog.jpg" alt="Blogs">
+
+    </div>
+
+    <div class="apicall" id="apicallp">
+        <h1>PUBLISHED BLOGS</h1>
+        <p>Millions of Bloggers have started their blogging <br>journey with BloGster. You should too give your<br> blogs a perfect home.
+           Get a BloGster.com <br>domain  in just a few clicks and start your<br> own journey and get paid for your hard work.
+        </p>
+
+        <button  onclick="btnClickHandeler(); " >READ PUBLISHED BLOGS</button>
+
+        <table class="published" id="tbpub">
+            <thead >
+                <tr>
+
+                    <th>USERID</th>
+                    <th>ID</th>
+                    <th>TITLE</th>
+                    <th>BODY</th>
+
+                </tr>
+            </thead>
+
+            <tbody id="publog">
+
+            </tbody>
+        </table>
+
+
+
+
+
+
+    </div>
+
+    <div class="blogform"  id="blogging">
+        <h1>START YOUR JOURNEY</h1>
+        <p>Start your journey today and enhance your <br> blogging experience after publishing your<br> first blog and get paid and earn rewards.</p>
+
+        <div class="form1">
+            <form name="myform" onsubmit="myfunc()" method="POST" >
+                <label for="userid">USER ID</label><br>
+                <input  name="userid" type="number" placeholder="Enter your user id here" required><br>
+                <label for="id">ID</label><br>
+                <input name="id" type="number" placeholder="Enter your id here" required><br>
+                <label for="blog">TITLE</label><br>
+                <input name="blog" type="text" placeholder="Enter blog title here" required><br>
+                <label for="body" >BODY</label><br>
+                <textarea name="body" type="text" placeholder="Enter blog content here" required></textarea>
+                <button type="submit" class="formbtn">PUBLISH BLOG</button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <div class="foot">
+
+
+
+    </div>
+
+
+</body>
+
+
+
+
+
+<script>
+        function myfunc(){
+		let x=document.forms["myform"]["userid"].value;
+		let y=document.forms["myform"]["id"].value;
+		let z=document.forms["myform"]["blog"].value;
+		let a=document.forms["myform"]["body"].value;
+
+
+		if(x=="")
+		{
+			alert("fill userid");
+			return false;
+		}
+		else if(y=="")
+		{
+			alert("fill id");
+			return false;
+		}
+		else if(z=="")
+		{
+			alert("fill title");
+			return false;
+		}
+		else if(a=="")
+		{
+			alert("fill text");
+			return false;
+		}
+		else{
+                alert("Your Blog is Published");
+		}
+
+
+	}
+
+
+
+    function btnClickHandeler() {
+
+                document.getElementById("tbpub").style.display="block";
+
+
+                document.getElementById("apicallp").style.height ="1750px";
+                var xhr = new XMLHttpRequest()
+                console.log(xhr);
+                xhr.onreadystatechange = function () {
+                    if (this.readyState == 4 && this.status == 200) {
+
+                        var data = this.responseText;
+                        console.log(this.responseText);
+                        var dataObject = JSON.parse(data)
+                        
+                        for (var i = 0; i < 10; i++) {
+                            var tr = document.createElement("tr")
+                            var td1 = document.createElement("td")
+                            var td2 = document.createElement("td")
+                            var td3 = document.createElement("td")
+                            var td4 = document.createElement("td")
+
+                            td1.innerHTML = dataObject[i].userId;
+                            td2.innerHTML = dataObject[i].id;
+                            td3.innerHTML = dataObject[i].title;
+                            td4.innerHTML = dataObject[i].body;
+
+                            tr.appendChild(td1)
+                            tr.appendChild(td2)
+                            tr.appendChild(td3)
+                            tr.appendChild(td4)
+
+                            document.getElementById("publog").appendChild(tr);
+                        }
+
+                    }
+                }
+                xhr.open("GET", "https://jsonplaceholder.typicode.com/posts?utm_source=Mailerlite&utm_medium=E-mail&utm_campaign=Test%20Series&utm_term=2022-08-11", true);
+                xhr.send();
+            }
+</script>
+</html>
