@@ -344,6 +344,10 @@
     cursor: pointer;
 }
 
+.foot a:hover{
+    color: #ff8210;
+}
+
 
 .foot h3{
     color: white;
